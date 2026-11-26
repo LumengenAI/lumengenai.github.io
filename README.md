@@ -27,6 +27,14 @@ bundle install
 bundle exec jekyll serve
 ```
 
-访问 <http://127.0.0.1:4000/>。本机若无法安装依赖，仍能编辑 Markdown 并推送；结构性修改需在 GitHub Pages 构建日志和线上页面核验。当前 Windows 环境的 GCC 编译器未能生成可执行文件，因此 `bundle install` 在 native extension 阶段失败；本仓库尚未完成本地完整构建验收。请修复 RubyInstaller / MSYS2 工具链后再运行以上命令。
+访问 <http://127.0.0.1:4000/>。在 Windows 上需使用 RubyInstaller 的 MSYS2/UCRT64 工具链。如果原生扩展编译时 GCC 无法启动汇编器，可在当前 PowerShell 会话中设置：
+
+```powershell
+$env:PATH = "C:\Ruby33-x64\msys64\ucrt64\bin;C:\Ruby33-x64\msys64\usr\bin;$env:PATH"
+$env:COMPILER_PATH = 'C:\Ruby33-x64\msys64\ucrt64\bin'
+bundle install
+```
+
+将 `C:\Ruby33-x64` 换成实际 RubyInstaller 安装目录。若 `eventmachine` 的 C++ 扩展仍编译失败，可先运行 `gem install eventmachine -v 1.2.7 -- --with-cxxflags=-BC:/Ruby33-x64/msys64/ucrt64/bin/`，再运行 `bundle install`。之后运行 `bundle exec jekyll serve` 即可。
 
 部署使用 GitHub Pages 的 `main` 分支根目录。请在仓库 Settings → Pages 中确认该设置。`docs/`、`README.md` 和 Gemfile 不会被发布到站点。
