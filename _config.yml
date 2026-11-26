@@ -1,3 +1,17 @@
-theme: jekyll-theme-minimal
-title: Henry Xing's homepage
-description: Bookmark this to keep an eye on my project updates!
+title: Henry Xing
+description: 视频编解码、AIGC、计算机图形学与云原生技术的笔记和课程
+url: https://lumengenai.github.io
+lang: zh-CN
+timezone: Asia/Shanghai
+permalink: /notes/:title/
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+exclude:
+  - README.md
+  - docs/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

@@ -1,0 +1,18 @@
+{% assign entries = include.posts %}
+{% if entries.size > 0 %}
+  <ol class="post-list">
+    {% for post in entries limit: include.limit %}
+      {% assign topic_info = site.data.topics | where: 'slug', post.topic | first %}
+      <li>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+        <div>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+          <span class="item-meta">{% if topic_info %}{{ topic_info.title }}{% else %}未分类{% endif %}{% case post.type %}{% when 'note' %} · 笔记{% when 'tutorial' %} · 教程{% when 'case-study' %} · 实践案例{% endcase %}</span>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+{% else %}
+  <p class="empty-state">笔记正在整理中。可以先浏览技术专题。</p>
+{% endif %}

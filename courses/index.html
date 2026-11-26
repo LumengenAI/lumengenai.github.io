@@ -1,0 +1,24 @@
+---
+layout: default
+title: 课程
+description: 按学习顺序组织的公开教程与授课资料。
+permalink: /courses/
+section: courses
+---
+{% assign courses = site.pages | where: 'layout', 'course' | sort: 'order' %}
+<div class="page-heading narrow">
+  <p class="eyebrow">Learning</p>
+  <h1>课程</h1>
+  <p class="lead">按章节组织的教程与授课资料，方便循序学习。</p>
+</div>
+<section class="content-section narrow" aria-label="课程列表">
+  {% if courses.size > 0 %}
+    <ol class="course-list">
+      {% for course in courses %}
+      <li><a href="{{ course.url | relative_url }}"><span class="course-number">0{{ forloop.index }}</span><span><strong>{{ course.title }}</strong><span class="course-description">{{ course.description }}</span></span><span aria-hidden="true">↗</span></a></li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty-state">公开课程正在整理中。现阶段可以先浏览<a href="{{ '/topics/' | relative_url }}">技术专题</a>与<a href="{{ '/notes/' | relative_url }}">笔记</a>。</p>
+  {% endif %}
+</section>

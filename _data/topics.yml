@@ -1,0 +1,12 @@
+- slug: video-codec
+  title: 视频编解码
+  description: 编码原理、工程实现与性能实践。
+- slug: aigc
+  title: AIGC
+  description: 生成式 AI 的模型、工具与应用实践。
+- slug: computer-graphics
+  title: 计算机图形学
+  description: 渲染、图形算法与视觉表达。
+- slug: cloud-native
+  title: 云原生技术
+  description: 容器、服务架构与工程化交付。

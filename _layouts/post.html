@@ -1,0 +1,15 @@
+---
+layout: default
+section: notes
+---
+{% assign topic_info = site.data.topics | where: 'slug', page.topic | first %}
+<article class="article narrow">
+  <header class="page-heading">
+    <p class="eyebrow"><a href="{{ '/notes/' | relative_url }}">笔记</a>{% if topic_info %} / <a href="{{ topic_info.slug | prepend: '/topics/' | append: '/' | relative_url }}">{{ topic_info.title }}</a>{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+    <p class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>{% if page.updated %} · 更新于 {{ page.updated | date: '%Y年%m月%d日' }}{% endif %}</p>
+  </header>
+  <div class="prose">{{ content }}</div>
+  <footer class="article-footer"><a href="{{ '/notes/' | relative_url }}">← 返回全部笔记</a></footer>
+</article>
