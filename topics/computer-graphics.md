@@ -1,4 +1,4 @@
-﻿---
+---
 layout: topic
 title: 计算机图形学
 description: 渲染、图形算法与视觉表达。

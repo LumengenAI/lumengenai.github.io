@@ -1,4 +1,4 @@
-﻿---
+---
 layout: topic
 title: AIGC
 description: 生成式 AI 的模型、工具与应用实践。

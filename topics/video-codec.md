@@ -1,4 +1,4 @@
-﻿---
+---
 layout: topic
 title: 视频编解码
 description: 编码原理、工程实现与性能实践。
